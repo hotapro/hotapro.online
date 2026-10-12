@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hota Pro System Status | Service Availability</title>
+<meta name="description" content="Trung tâm trạng thái hệ sinh thái Hota Pro: theo dõi dịch vụ, lịch sử sự cố, bảo trì theo kế hoạch và cách báo cáo vấn đề.">
+<link rel="canonical" href="https://www.hotapro.online/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0f1419">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hota Pro System Status | Service Availability">
+<meta property="og:description" content="Theo dõi trạng thái dịch vụ, sự cố và bảo trì của hệ sinh thái Hota Pro.">
+<meta property="og:url" content="https://www.hotapro.online/">
+<meta property="og:site_name" content="Hota Pro Status">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.hotapro.online/#webpage",
+      "url": "https://www.hotapro.online/",
+      "name": "Hota Pro System Status | Service Availability",
+      "inLanguage": "vi",
+      "isPartOf": { "@id": "https://www.hotapro.online/#website" },
+      "about": { "@id": "https://www.hotapro.com/#organization" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.hotapro.online/#website",
+      "url": "https://www.hotapro.online/",
+      "name": "Hota Pro Status"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.hotapro.com/#organization",
+      "name": "Hota Pro",
+      "legalName": "CÔNG TY TNHH HOTA PRO",
+      "alternateName": ["Hota Pro Company Limited", "Hota Pro Agency"],
+      "url": "https://www.hotapro.com/",
+      "email": "lien-he@hotapro.com",
+      "telephone": "+84557557756",
+      "taxID": "0049200994",
+      "founder": { "@type": "Person", "name": "Ngô Anh Vũ" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "19A Trịnh Văn Bô, Hòe Thị, Xuân Phương",
+        "addressLocality": "Hà Nội",
+        "postalCode": "12008",
+        "addressCountry": "VN"
+      },
+      "sameAs": [
+        "https://www.facebook.com/hotapro",
+        "https://www.instagram.com/hotapro",
+        "https://www.threads.com/@hotapro",
+        "https://www.tiktok.com/@hotapro",
+        "https://www.youtube.com/@hotapro",
+        "https://github.com/hotapro",
+        "https://www.pinterest.com/hotapro",
+        "https://www.linkedin.com/company/hotapro"
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#0f1419;--bg2:#141b22;--card:#18212a;--card2:#1e2833;--line:#2a3643;
+  --text:#e8eef4;--muted:#93a4b5;--accent:#2dd4bf;--accent2:#38bdf8;
+  --ok:#34d399;--warn:#fbbf24;--bad:#f87171;--maint:#a78bfa;--unk:#7b8a99;
+  --shadow:0 10px 30px rgba(0,0,0,.35);--radius:16px;
+}
+:root[data-theme="light"]{
+  --bg:#f4f7fa;--bg2:#eaf0f5;--card:#fff;--card2:#f1f5f9;--line:#d9e2ea;
+  --text:#101a24;--muted:#56677a;--accent:#0d9488;--accent2:#0284c7;
+  --ok:#059669;--warn:#b45309;--bad:#dc2626;--maint:#7c3aed;--unk:#64748b;
+  --shadow:0 10px 30px rgba(20,40,60,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--text);
+  background:radial-gradient(1000px 500px at 10% -10%,color-mix(in srgb,var(--accent) 14%,transparent),transparent),
+             radial-gradient(900px 500px at 100% 0,color-mix(in srgb,var(--accent2) 12%,transparent),transparent),var(--bg);
+  min-height:100vh}
+a{color:var(--accent2)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:#04201c;padding:8px 14px;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.demo-banner{background:linear-gradient(90deg,color-mix(in srgb,var(--warn) 22%,var(--bg)),color-mix(in srgb,var(--maint) 20%,var(--bg)));
+  border-bottom:1px solid var(--line);padding:10px 0;font-size:14px;font-weight:600;text-align:center}
+.demo-banner[hidden]{display:none}
+header.top{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 80%,transparent);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:14px;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px;text-decoration:none;color:var(--text)}
+.logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#04201c;font-weight:900}
+.nav-links{display:flex;gap:18px;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px}
+.nav-links a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);color:var(--text);
+  padding:9px 14px;border-radius:10px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:transform .2s,border-color .2s,background .2s}
+.btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#04201c;border:0}
+.btn[disabled]{opacity:.6;cursor:progress}
+.hero{padding:44px 0 20px}
+.eyebrow{color:var(--accent);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:8px 0 10px}
+.lead{color:var(--muted);max-width:720px;margin:0}
+.overview{margin-top:26px;display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.state{display:flex;gap:16px;align-items:center}
+.pulse{width:46px;height:46px;border-radius:50%;background:var(--unk);position:relative;flex:none}
+.pulse::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:pulse 2.4s ease-out infinite;opacity:.5}
+@keyframes pulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.9);opacity:0}}
+.state h2{margin:0;font-size:20px}
+.state p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.counts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.count{background:var(--card2);border-radius:12px;padding:12px 14px}
+.count b{font-size:24px;display:block;line-height:1.1}
+.count span{font-size:12px;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:10px 18px;color:var(--muted);font-size:13px;margin-top:14px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;
+  border:1px dashed var(--warn);color:var(--warn);vertical-align:middle}
+section{padding:34px 0 6px}
+.sec-head{display:flex;flex-wrap:wrap;gap:12px;align-items:end;justify-content:space-between;margin-bottom:16px}
+h2.title{font-size:24px;margin:0}
+.sub{color:var(--muted);font-size:14px;margin:2px 0 0}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--muted);padding:6px 12px;border-radius:999px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
+.chip[aria-pressed="true"]{background:var(--accent);color:#04201c;border-color:var(--accent)}
+.chip:hover{color:var(--text)}
+.chip[aria-pressed="true"]:hover{color:#04201c}
+.group{margin-bottom:22px}
+.group h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:10px;
+  transition:transform .25s,border-color .25s,box-shadow .25s;animation:rise .5s both}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:var(--shadow)}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.card h4{margin:0;font-size:16px}
+.domain{color:var(--muted);font-size:13px;word-break:break-all}
+.role{font-size:14px;color:var(--muted);margin:0}
+.status{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;white-space:nowrap}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--unk);flex:none}
+.s-operational .dot{background:var(--ok)} .s-operational{color:var(--ok)}
+.s-degraded .dot{background:var(--warn)} .s-degraded{color:var(--warn)}
+.s-outage .dot{background:var(--bad)} .s-outage{color:var(--bad)}
+.s-maintenance .dot{background:var(--maint)} .s-maintenance{color:var(--maint)}
+.s-unknown .dot{background:var(--unk)} .s-unknown{color:var(--unk)}
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.visit{font-weight:700;text-decoration:none;font-size:13px}
+.visit:hover{text-decoration:underline}
+.empty{color:var(--muted);padding:18px;text-align:center;border:1px dashed var(--line);border-radius:12px}
+.timeline{display:grid;gap:12px}
+details.inc{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+details.inc summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+details.inc summary::-webkit-details-marker{display:none}
+details.inc summary::after{content:"+";font-size:20px;color:var(--muted);transition:transform .25s}
+details.inc[open] summary::after{transform:rotate(45deg)}
+.inc-title{font-weight:700}
+.inc-body{padding:0 18px 16px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+.inc-body ol{margin:12px 0 0;padding-left:0;list-style:none;border-left:2px solid var(--line)}
+.inc-body li{padding:0 0 12px 16px;position:relative}
+.inc-body li::before{content:"";position:absolute;left:-6px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.inc-body li b{color:var(--text)}
+.maint{display:grid;gap:12px}
+.maint-item{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--maint);border-radius:12px;padding:14px 18px}
+.maint-item h4{margin:0 0 4px}
+.maint-item p{margin:0;color:var(--muted);font-size:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+form.sub-form{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+input[type=email]{flex:1 1 220px;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card2);color:var(--text);font:inherit}
+.note{font-size:13px;color:var(--muted);margin-top:10px;min-height:20px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px}
+.faq summary{cursor:pointer;padding:14px 18px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--muted)}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:0;padding:0 18px 16px;color:var(--muted);font-size:15px}
+.social{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+footer{margin-top:50px;border-top:1px solid var(--line);padding:30px 0 50px;color:var(--muted);font-size:14px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+footer b{color:var(--text)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(max-width:820px){.overview,.two,.foot{grid-template-columns:1fr}.nav-links a.hide-m{display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Bỏ qua đến nội dung chính</a>
+<div class="demo-banner" id="demoBanner" role="status">Demo data — live monitoring is not connected</div>
+
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="./" aria-label="Hota Pro Status"><span class="logo" aria-hidden="true">H</span><span>Hota Pro <span style="color:var(--muted);font-weight:600">Status</span></span></a>
+    <nav class="nav-links" aria-label="Điều hướng chính">
+      <a class="hide-m" href="#services">Dịch vụ</a>
+      <a class="hide-m" href="#incidents">Sự cố</a>
+      <a class="hide-m" href="#maintenance">Bảo trì</a>
+      <a class="hide-m" href="#faq">FAQ</a>
+      <button class="btn" id="themeBtn" type="button" aria-label="Chuyển giao diện sáng/tối">◐ Giao diện</button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Hota Pro · Công nghệ &amp; Marketing số</div>
+    <h1>Trung tâm trạng thái hệ sinh thái Hota Pro</h1>
+    <p class="lead">Xem trạng thái từng dịch vụ, lịch sử sự cố, bảo trì theo kế hoạch và cách báo cáo vấn đề cho 11 website của Hota Pro.</p>
+
+    <div class="overview">
+      <div class="panel" aria-live="polite">
+        <div class="state">
+          <div class="pulse" id="pulse" aria-hidden="true"></div>
+          <div>
+            <h2 id="overallTitle">Đang tải…</h2>
+            <p id="overallDesc"></p>
+          </div>
+        </div>
+        <div class="meta">
+          <span>Cập nhật lần cuối: <time id="updated">—</time></span>
+          <span id="sourceLabel"></span>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn primary" id="refreshBtn" type="button">↻ Làm mới</button>
+          <a class="btn" href="#subscribe">Đăng ký nhận cập nhật</a>
+        </div>
+        <p class="note" id="refreshNote"></p>
+      </div>
+      <div class="panel">
+        <div class="counts" id="counts" aria-label="Tổng hợp theo trạng thái"></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="services" aria-labelledby="svcTitle">
+    <div class="sec-head">
+      <div>
+        <h2 class="title" id="svcTitle">Thành phần hệ thống</h2>
+        <p class="sub">Website, Blog, Contact, Products, Software, Email và Integrations.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Lọc theo trạng thái" id="filters"></div>
+    </div>
+    <div id="groups"></div>
+  </section>
+
+  <section id="incidents" aria-labelledby="incTitle">
+    <div class="sec-head">
+      <div>
+        <h2 class="title" id="incTitle">Lịch sử sự cố</h2>
+        <p class="sub">Nhấn vào từng mục để xem diễn biến.</p>
+      </div>
+    </div>
+    <div class="timeline" id="incList"></div>
+  </section>
+
+  <section id="maintenance" aria-labelledby="mTitle">
+    <div class="sec-head"><div><h2 class="title" id="mTitle">Bảo trì theo kế hoạch</h2></div></div>
+    <div class="maint" id="maintList"></div>
+  </section>
+
+  <section id="subscribe" aria-labelledby="subTitle">
+    <div class="two">
+      <div class="panel">
+        <h2 class="title" id="subTitle" style="font-size:20px">Đăng ký nhận cập nhật</h2>
+        <p class="sub">Nhận thông báo khi có sự cố hoặc bảo trì.</p>
+        <form class="sub-form" id="subForm" novalidate>
+          <label class="sr" for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="ban@congty.com" autocomplete="email" required>
+          <button class="btn primary" type="submit">Đăng ký</button>
+        </form>
+        <p class="note" id="subNote" role="status"></p>
+      </div>
+      <div class="panel">
+        <h2 class="title" style="font-size:20px">Báo cáo vấn đề</h2>
+        <p class="sub">Gặp lỗi khi truy cập? Gửi cho chúng tôi:</p>
+        <ul style="margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:14px">
+          <li>Địa chỉ trang hoặc dịch vụ bị ảnh hưởng.</li>
+          <li>Thời điểm xảy ra và múi giờ của bạn.</li>
+          <li>Thông báo lỗi hoặc ảnh chụp màn hình.</li>
+          <li>Trình duyệt, thiết bị và mạng đang dùng.</li>
+        </ul>
+        <div class="social">
+          <a class="btn" href="mailto:lien-he@hotapro.com?subject=B%C3%A1o%20c%C3%A1o%20s%E1%BB%B1%20c%E1%BB%91%20-%20Hota%20Pro%20Status">✉ lien-he@hotapro.com</a>
+          <a class="btn" href="tel:+84557557756">☎ +84 557 557 756</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" aria-labelledby="faqTitle" class="faq">
+    <div class="sec-head"><div><h2 class="title" id="faqTitle">Câu hỏi thường gặp</h2></div></div>
+    <details><summary>Dữ liệu trên trang này có phải tình trạng thật không?</summary>
+      <p>Chỉ khi trang hiển thị nguồn “Live API”. Khi có nhãn “Demo data” hoặc “Sample status”, đó là dữ liệu minh họa và không phản ánh máy chủ thực tế.</p></details>
+    <details><summary>Nút “Làm mới” làm gì?</summary>
+      <p>Nếu chưa cấu hình status API, nút chỉ cập nhật thời điểm làm mới của dữ liệu mẫu và không kiểm tra máy chủ. Khi API được cấu hình, nút sẽ tải lại dữ liệu từ API.</p></details>
+    <details><summary>Làm sao biết một website đang hoạt động?</summary>
+      <p>Bạn có thể mở trực tiếp website bằng nút “Mở website”. Trạng thái online chính thức chỉ được hiển thị sau khi hệ thống giám sát được kết nối.</p></details>
+    <details><summary>Tôi nên báo cáo sự cố bằng cách nào?</summary>
+      <p>Gửi email tới lien-he@hotapro.com hoặc gọi +84 557 557 756, kèm địa chỉ trang, thời điểm và mô tả lỗi.</p></details>
+    <details><summary>Làm sao nhận thông báo sự cố?</summary>
+      <p>Đăng ký email ở mục trên. Tính năng này cần backend gửi email; khi chưa kết nối, biểu mẫu sẽ không lưu hay gửi dữ liệu.</p></details>
+  </section>
+
+  <section aria-labelledby="ecoTitle">
+    <div class="sec-head"><div><h2 class="title" id="ecoTitle" style="font-size:20px">Kênh chính thức</h2></div></div>
+    <div class="social" id="socials"></div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <b>CÔNG TY TNHH HOTA PRO</b> (Hota Pro Company Limited)<br>
+      Mã số doanh nghiệp: 0049200994 · Người đại diện: Ngô Anh Vũ<br>
+      Ngày đăng ký lần đầu: 01/10/2026<br>
+      19A Trịnh Văn Bô, Hòe Thị, Xuân Phương, Hà Nội 12008
+    </div>
+    <div>
+      <b>Liên hệ</b><br>
+      <a href="mailto:lien-he@hotapro.com">lien-he@hotapro.com</a><br>
+      <a href="tel:+84557557756">+84 557 557 756</a><br>
+      <span id="year"></span> Hota Pro. Bảo lưu mọi quyền.
+    </div>
+  </div>
+</footer>
+
+<script>
+"use strict";
+/* ============ CẤU HÌNH ============ */
+const DEMO_MODE = true;               // true = dữ liệu mẫu. Đặt false CHỈ khi STATUS_API_URL đã hoạt động.
+const STATUS_API_URL = "";            // ví dụ: "https://status-api.example.com/v1/status.json" (không đặt token ở đây)
+
+/* Vai trò domain: chỉnh lại cho đúng thực tế. */
+const SITES = [
+  {id:"com",   name:"Hota Pro",            url:"https://www.hotapro.com/",    group:"Website",      role:"Website thương hiệu chính của Hota Pro."},
+  {id:"online",name:"Status Center",       url:"https://www.hotapro.online/", group:"Website",      role:"Trang trạng thái hệ sinh thái (trang này)."},
+  {id:"net",   name:"Hota Pro Blog",       url:"https://www.hotapro.net/",    group:"Blog",         role:"Nội dung, bài viết và kiến thức công nghệ & marketing."},
+  {id:"us",    name:"Hota Pro US",         url:"https://www.hotapro.us/",     group:"Contact",      role:"Cổng liên hệ và tiếp nhận yêu cầu hợp tác."},
+  {id:"me",    name:"Hota Pro Me",         url:"https://www.hotapro.me/",     group:"Contact",      role:"Hồ sơ giới thiệu và thông tin liên hệ."},
+  {id:"org",   name:"Hota Pro Org",        url:"https://www.hotapro.org/",    group:"Products",     role:"Giới thiệu sản phẩm và giải pháp."},
+  {id:"store", name:"Hota Pro Store",      url:"https://www.hotapro.store/",  group:"Products",     role:"Cửa hàng sản phẩm và dịch vụ."},
+  {id:"tech",  name:"Hota Pro Tech",       url:"https://www.hotapro.tech/",   group:"Software",     role:"Công nghệ, phần mềm và tài liệu kỹ thuật."},
+  {id:"app",   name:"Hota Pro App",        url:"https://www.hotapro.app/",    group:"Software",     role:"Ứng dụng và công cụ trực tuyến."},
+  {id:"xyz",   name:"Hota Pro Labs",       url:"https://www.hotapro.xyz/",    group:"Integrations", role:"Thử nghiệm, tích hợp và dự án mở rộng."},
+  {id:"site",  name:"Hota Pro Site",       url:"https://www.hotapro.site/",   group:"Integrations", role:"Trang phụ trợ và tích hợp bổ sung."}
+];
+const EXTRA = [
+  {id:"mail", name:"Email liên hệ", url:"mailto:lien-he@hotapro.com", group:"Email", role:"Hộp thư lien-he@hotapro.com và thông báo qua email.", cta:"Gửi email"}
+];
+const SOCIALS = [
+  ["Facebook","https://www.facebook.com/hotapro"],["Instagram","https://www.instagram.com/hotapro"],
+  ["Threads","https://www.threads.com/@hotapro"],["TikTok","https://www.tiktok.com/@hotapro"],
+  ["YouTube","https://www.youtube.com/@hotapro"],["GitHub","https://github.com/hotapro"],
+  ["Pinterest","https://www.pinterest.com/hotapro"],["LinkedIn","https://www.linkedin.com/company/hotapro"]
+];
+const GROUP_ORDER = ["Website","Blog","Contact","Products","Software","Email","Integrations"];
+const STATUS = {
+  operational:{label:"Operational",vi:"Hoạt động bình thường"},
+  degraded:{label:"Degraded",vi:"Suy giảm hiệu năng"},
+  outage:{label:"Outage",vi:"Gián đoạn"},
+  maintenance:{label:"Maintenance",vi:"Đang bảo trì"},
+  unknown:{label:"Unknown",vi:"Chưa có dữ liệu giám sát"}
+};
+
+/* Dữ liệu MẪU — chỉ dùng khi DEMO_MODE = true. Không phản ánh máy chủ thực. */
+const SAMPLE = {
+  generatedAt:null,
+  components:{com:"operational",online:"operational",net:"operational",us:"operational",me:"operational",org:"degraded",store:"operational",tech:"maintenance",app:"operational",xyz:"operational",site:"operational",mail:"operational"},
+  incidents:[
+    {id:"s1",title:"Độ trễ cao khi tải trang sản phẩm",status:"resolved",impact:"degraded",components:["org"],started:"2026-10-05T09:10:00+07:00",
+     updates:[{t:"2026-10-05T09:10:00+07:00",s:"Investigating",m:"Chúng tôi đang kiểm tra báo cáo về thời gian tải chậm."},
+              {t:"2026-10-05T10:05:00+07:00",s:"Identified",m:"Đã xác định nguyên nhân do bộ nhớ đệm hết hạn đồng loạt."},
+              {t:"2026-10-05T10:40:00+07:00",s:"Resolved",m:"Sự cố đã được khắc phục."}]},
+    {id:"s2",title:"Email thông báo gửi chậm",status:"resolved",impact:"degraded",components:["mail"],started:"2026-09-28T14:00:00+07:00",
+     updates:[{t:"2026-09-28T14:00:00+07:00",s:"Investigating",m:"Một số email được gửi chậm hơn bình thường."},
+              {t:"2026-09-28T15:30:00+07:00",s:"Resolved",m:"Hàng đợi gửi thư đã trở lại bình thường."}]}
+  ],
+  maintenance:[
+    {id:"m1",title:"Nâng cấp hạ tầng Hota Pro Tech",components:["tech"],start:"2026-10-14T01:00:00+07:00",end:"2026-10-14T03:00:00+07:00",desc:"Trong thời gian này, website có thể gián đoạn ngắn."}
+  ]
+};
+
+/* ============ TRẠNG THÁI ỨNG DỤNG ============ */
+const state = {data:null, source:"demo", filter:"all", refreshedAt:null};
+const $ = s => document.querySelector(s);
+const fmt = iso => new Date(iso).toLocaleString("vi-VN",{dateStyle:"medium",timeStyle:"short"});
+
+/* Nhận JSON từ status API. Định dạng mong đợi:
+{ generatedAt, components:{ id:{status,responseMs?,updatedAt?} | "status" }, incidents:[...], maintenance:[...] } */
+async function fetchLiveStatus(url){
+  if(!url) throw new Error("STATUS_API_URL chưa được cấu hình");
+  const res = await fetch(url,{headers:{Accept:"application/json"},cache:"no-store"});
+  if(!res.ok) throw new Error("API trả về HTTP "+res.status);
+  const j = await res.json();
+  if(!j || typeof j.components!=="object") throw new Error("JSON không đúng định dạng");
+  return j;
+}
+function normalize(raw,isSample){
+  const comps={};
+  for(const [id,v] of Object.entries(raw.components||{})){
+    const o = typeof v==="string" ? {status:v} : v;
+    comps[id]={status:STATUS[o.status]?o.status:"unknown",responseMs:isSample?null:(Number.isFinite(o.responseMs)?o.responseMs:null),updatedAt:o.updatedAt||raw.generatedAt||null};
+  }
+  return {generatedAt:raw.generatedAt,components:comps,incidents:raw.incidents||[],maintenance:raw.maintenance||[]};
+}
+async function load(){
+  if(DEMO_MODE){
+    state.source="demo";
+    const d=structuredClone(SAMPLE); d.generatedAt=new Date().toISOString();
+    state.data=normalize(d,true);
+  }else{
+    try{
+      state.data=normalize(await fetchLiveStatus(STATUS_API_URL),false);
+      state.source="live";
+    }catch(e){
+      state.source="error"; state.error=e.message;
+      state.data=normalize({components:{},incidents:[],maintenance:[]},false);
+    }
+  }
+  state.refreshedAt=new Date();
+  render();
+}
+
+/* ============ RENDER ============ */
+function statusOf(id){return (state.data.components[id]||{}).status||"unknown"}
+function badge(st){const s=STATUS[st];return `<span class="status s-${st}"><span class="dot" aria-hidden="true"></span><span>${s.label}<span class="sr"> — ${s.vi}</span></span></span>`}
+function esc(t){return String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+
+function renderOverview(){
+  const all=[...SITES,...EXTRA], c={operational:0,degraded:0,outage:0,maintenance:0,unknown:0};
+  all.forEach(x=>c[statusOf(x.id)]++);
+  const demo=state.source==="demo", err=state.source==="error";
+  const pulse=$("#pulse");
+  let title,desc,color;
+  if(err){title="Không tải được dữ liệu trạng thái";desc="Status API không phản hồi. Trạng thái dịch vụ hiện chưa xác định.";color="var(--unk)"}
+  else if(demo){title="Chế độ demo — chưa kết nối giám sát";desc="Các trạng thái bên dưới là dữ liệu mẫu (Sample status), không phải tình trạng máy chủ thực.";color="var(--warn)"}
+  else if(c.outage){title="Một số dịch vụ đang gián đoạn";desc=`${c.outage} thành phần gặp sự cố.`;color="var(--bad)"}
+  else if(c.degraded||c.maintenance){title="Một số dịch vụ bị ảnh hưởng";desc="Có thành phần suy giảm hoặc đang bảo trì.";color="var(--warn)"}
+  else if(c.unknown===all.length){title="Chưa có dữ liệu";desc="API chưa trả về trạng thái cho thành phần nào.";color="var(--unk)"}
+  else {title="Các dịch vụ được giám sát đang hoạt động";desc="Theo dữ liệu mới nhất từ hệ thống giám sát.";color="var(--ok)"}
+  pulse.style.background=color; $("#overallTitle").textContent=title; $("#overallDesc").textContent=desc;
+  $("#updated").textContent=state.refreshedAt.toLocaleString("vi-VN",{dateStyle:"medium",timeStyle:"medium"});
+  $("#updated").dateTime=state.refreshedAt.toISOString();
+  $("#sourceLabel").innerHTML = demo?'<span class="tag">Sample status</span>':err?esc(state.error||""):'<span class="tag" style="border-style:solid;color:var(--ok);border-color:var(--ok)">Live API</span>';
+  $("#counts").innerHTML=Object.keys(STATUS).map(k=>`<div class="count"><b>${c[k]}</b><span>${STATUS[k].vi}</span></div>`).join("");
+  $("#demoBanner").hidden=!DEMO_MODE;
+}
+function filters(){
+  const opts=[["all","Tất cả"],...Object.entries(STATUS).map(([k,v])=>[k,v.label])];
+  $("#filters").innerHTML=opts.map(([k,l])=>`<button type="button" class="chip" data-f="${k}" aria-pressed="${state.filter===k}">${l}</button>`).join("");
+}
+function renderGroups(){
+  const demo=state.source==="demo";
+  const items=[...SITES,...EXTRA].filter(x=>state.filter==="all"||statusOf(x.id)===state.filter);
+  if(!items.length){$("#groups").innerHTML='<p class="empty">Không có thành phần nào ở trạng thái này.</p>';return}
+  let html="",i=0;
+  for(const g of GROUP_ORDER){
+    const list=items.filter(x=>x.group===g); if(!list.length) continue;
+    html+=`<div class="group"><h3>${g}</h3><div class="grid">`+list.map(x=>{
+      const comp=state.data.components[x.id]||{}, st=statusOf(x.id);
+      const rt=comp.responseMs!=null?`Phản hồi: ${comp.responseMs} ms`:"Phản hồi: chưa có dữ liệu";
+      const ext=x.url.startsWith("http");
+      return `<article class="card" style="animation-delay:${(i++)*40}ms">
+        <div class="card-top"><div><h4>${esc(x.name)}</h4><div class="domain">${esc(x.url.replace(/^https?:\/\//,"").replace(/^mailto:/,""))}</div></div>
+        ${badge(st)}</div>
+        <p class="role">${esc(x.role)}</p>
+        <div class="card-foot"><span>${demo?'<span class="tag">Sample status</span>':rt}</span>
+        <a class="visit" href="${esc(x.url)}"${ext?' target="_blank" rel="noopener noreferrer"':""}>${x.cta||"Mở website"} ${ext?"↗":""}<span class="sr"> ${esc(x.name)}</span></a></div>
+      </article>`}).join("")+`</div></div>`;
+  }
+  $("#groups").innerHTML=html;
+}
+function renderIncidents(){
+  const list=state.data.incidents, demo=state.source==="demo";
+  if(!list.length){$("#incList").innerHTML=`<p class="empty">${state.source==="live"?"Không có sự cố nào được ghi nhận.":"Chưa có dữ liệu sự cố."}</p>`;return}
+  $("#incList").innerHTML=list.map(n=>`<details class="inc"><summary>
+    <div><div class="inc-title">${esc(n.title)}</div><div class="sub">${fmt(n.started)} ${demo?'<span class="tag">Sample status</span>':""}</div></div>
+    <span class="status s-${n.status==="resolved"?"operational":"degraded"}"><span class="dot" aria-hidden="true"></span>${n.status==="resolved"?"Resolved":"Ongoing"}</span></summary>
+    <div class="inc-body"><ol>${(n.updates||[]).map(u=>`<li><b>${esc(u.s)}</b> · ${fmt(u.t)}<br>${esc(u.m)}</li>`).join("")}</ol></div></details>`).join("");
+}
+function renderMaint(){
+  const list=state.data.maintenance, demo=state.source==="demo";
+  if(!list.length){$("#maintList").innerHTML='<p class="empty">Hiện không có bảo trì nào được lên lịch.</p>';return}
+  $("#maintList").innerHTML=list.map(m=>`<div class="maint-item"><h4>${esc(m.title)} ${demo?'<span class="tag">Sample status</span>':""}</h4>
+    <p>${fmt(m.start)} → ${fmt(m.end)}</p><p>${esc(m.desc||"")}</p></div>`).join("");
+}
+function render(){renderOverview();filters();renderGroups();renderIncidents();renderMaint()}
+
+/* ============ SỰ KIỆN ============ */
+$("#filters").addEventListener("click",e=>{const b=e.target.closest("[data-f]");if(!b)return;state.filter=b.dataset.f;filters();renderGroups()});
+$("#refreshBtn").addEventListener("click",async()=>{
+  const b=$("#refreshBtn"); b.disabled=true;
+  await load();
+  $("#refreshNote").textContent = state.source==="demo"
+    ? "Đã làm mới thời điểm của dữ liệu mẫu. Đây không phải kiểm tra máy chủ thật."
+    : state.source==="live" ? "Đã tải lại dữ liệu từ status API." : "Không thể tải dữ liệu từ status API.";
+  b.disabled=false;
+});
+$("#subForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const v=$("#email").value.trim(), n=$("#subNote");
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){n.textContent="Vui lòng nhập email hợp lệ.";return}
+  n.textContent="Tính năng đăng ký chưa được kết nối backend nên email của bạn chưa được gửi hay lưu. Bạn có thể liên hệ lien-he@hotapro.com.";
+});
+function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.setItem("hp-theme",t)}catch(_){}document.querySelector('meta[name="theme-color"]').content=t==="dark"?"#0f1419":"#f4f7fa"}
+$("#themeBtn").addEventListener("click",()=>setTheme(document.documentElement.dataset.theme==="dark"?"light":"dark"));
+(function(){let t=null;try{t=localStorage.getItem("hp-theme")}catch(_){}
+  if(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: light)").matches)t="light";
+  if(t)setTheme(t)})();
+$("#socials").innerHTML=SOCIALS.map(([n,u])=>`<a class="btn" href="${u}" target="_blank" rel="noopener noreferrer me">${n} ↗</a>`).join("");
+$("#year").textContent="© "+new Date().getFullYear();
+load();
+</script>
+</body>
+</html>
