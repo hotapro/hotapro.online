@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HOTA PRO Service Status | Trạng thái dịch vụ hệ sinh thái HOTA PRO</title>
+<meta name="description" content="Trang trạng thái dịch vụ của hệ sinh thái HOTA PRO: theo dõi website, thông báo sự cố và lịch bảo trì. Dữ liệu chỉ hiển thị là trực tiếp khi có nguồn giám sát thực tế được kết nối.">
+<link rel="canonical" href="https://www.hotapro.online/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HOTA PRO Service Status">
+<meta property="og:description" content="Trạng thái website và dịch vụ trong hệ sinh thái HOTA PRO.">
+<meta property="og:url" content="https://www.hotapro.online/">
+<meta property="og:locale" content="vi_VN">
+<meta name="theme-color" content="#0f7a4a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🟢%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#f4f8f5;--card:#fff;--ink:#0f1f17;--mut:#587064;--line:#dbe7df;--brand:#0f7a4a;--brand2:#22c55e;--unk:#64748b;--warn:#d97706;--bad:#dc2626;--ok:#16a34a;--shadow:0 10px 30px -12px rgba(15,122,74,.25);--r:18px;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08110c;--card:#101b15;--ink:#e8f3ec;--mut:#8fa99a;--line:#1f3228;--shadow:0 10px 30px -12px #000}}
+:root[data-theme="dark"]{--bg:#08110c;--card:#101b15;--ink:#e8f3ec;--mut:#8fa99a;--line:#1f3228;--shadow:0 10px 30px -12px #000}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background-image:radial-gradient(900px 400px at 85% -10%,rgba(34,197,94,.16),transparent),radial-gradient(700px 400px at -10% 10%,rgba(15,122,74,.12),transparent);background-repeat:no-repeat}
+a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
+:focus-visible{outline:3px solid var(--brand2);outline-offset:2px;border-radius:8px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;color:var(--ink)}
+.logo i{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:#fff;font-style:normal;box-shadow:var(--shadow)}
+nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+nav a{color:var(--mut);padding:6px 12px;border-radius:999px;font-size:14px;font-weight:600}
+nav a:hover{background:var(--card);color:var(--ink);text-decoration:none}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:12px;font:600 14px inherit;font-family:inherit;cursor:pointer;transition:.2s}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn.p{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:0}
+.btn.on{border-color:var(--brand);color:var(--brand)}
+.hero{padding:64px 0 28px}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:13px;font-weight:700;color:var(--brand);background:color-mix(in srgb,var(--brand) 12%,transparent);padding:6px 12px;border-radius:999px}
+h1{font-size:clamp(34px,6vw,60px);line-height:1.08;margin:16px 0 12px;letter-spacing:-1.5px}
+h1 span{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);max-width:720px;font-size:17px}
+.banner{margin-top:26px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;box-shadow:var(--shadow);animation:rise .7s both}
+.big{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:24px;color:#fff;background:var(--unk)}
+.banner h2{margin:0;font-size:22px}.banner p{margin:2px 0 0;color:var(--mut);font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;animation:rise .7s both}
+.stat b{font-size:28px;display:block;line-height:1.2}.stat small{color:var(--mut)}
+section{padding:36px 0}
+h2.t{font-size:28px;letter-spacing:-.5px;margin:0 0 6px}.sub{color:var(--mut);margin:0 0 20px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.tools input{flex:1;min-width:180px;padding:9px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,transparent);white-space:nowrap}
+.pill:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c)}
+.s-unknown{--c:var(--unk)}.s-operational{--c:var(--ok)}.s-degraded{--c:var(--warn)}.s-down{--c:var(--bad)}.s-maintenance{--c:#2563eb}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;transition:.25s;animation:rise .6s both;position:relative;overflow:hidden}
+.svc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--brand) 40%,var(--line))}
+.svc h3{margin:0;font-size:17px;word-break:break-all}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.cur{font-size:11px;font-weight:700;background:var(--brand);color:#fff;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;margin:14px 0;color:var(--mut)}.kv b{color:var(--ink);font-weight:600;text-align:right}
+.bars{display:flex;gap:2px;height:26px;align-items:flex-end}.bars i{flex:1;background:var(--line);border-radius:2px;height:35%}
+.bars.demo i{background:var(--brand2);opacity:.75}
+.acts{display:flex;gap:8px;margin-top:14px}.acts .btn{padding:6px 11px;font-size:13px}
+.list .grid{grid-template-columns:1fr}
+.list .svc{display:grid;grid-template-columns:1.3fr auto 1fr auto;gap:16px;align-items:center;padding:14px 18px}
+.list .kv{margin:0;grid-template-columns:auto auto;justify-content:start}.list .bars,.list .acts{margin:0}
+@media(max-width:860px){.list .svc{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}nav{display:none}}
+.note{border:1px dashed var(--warn);background:color-mix(in srgb,var(--warn) 9%,transparent);padding:12px 16px;border-radius:14px;font-size:14px;margin:0 0 16px}
+.tl{border-left:2px solid var(--line);margin-left:8px;padding-left:22px}
+.ev{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:14px}
+.ev:before{content:"";position:absolute;left:-30px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--c,var(--unk));border:3px solid var(--bg)}
+.ev h4{margin:0 0 4px}.ev time{font-size:12px;color:var(--mut)}
+.empty{color:var(--mut);text-align:center;padding:26px;background:var(--card);border:1px dashed var(--line);border-radius:14px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700}details p{color:var(--mut);margin:10px 0 0}
+form.sub{display:flex;gap:10px;flex-wrap:wrap}
+form.sub input{flex:1;min-width:200px;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+.cta{background:linear-gradient(135deg,#0b5d38,#16a34a);color:#fff;border-radius:26px;padding:38px;display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap;box-shadow:var(--shadow)}
+.cta h2{margin:0 0 6px;font-size:28px}.cta p{margin:0;opacity:.9}.cta a{color:#fff}.cta .btn{background:#fff;color:#0b5d38;border:0}
+.eco{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.eco a{background:var(--card);border:1px solid var(--line);padding:10px 14px;border-radius:12px;color:var(--ink);font-weight:600;font-size:14px;transition:.2s}
+.eco a:hover{border-color:var(--brand);text-decoration:none;transform:translateY(-2px)}
+.soc{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.soc a{border:1px solid var(--line);padding:6px 14px;border-radius:999px;font-size:14px;color:var(--mut)}
+footer{border-top:1px solid var(--line);padding:30px 0 40px;color:var(--mut);font-size:14px;margin-top:20px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:12px;opacity:0;transition:.3s;pointer-events:none;z-index:50}.toast.show{opacity:1;transform:translate(-50%,0)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#top"><i>H</i>HOTA PRO <small style="color:var(--mut);font-weight:600">Status</small></a>
+<nav aria-label="Điều hướng chính"><a href="#status">Current Status</a><a href="#services">Services</a><a href="#incidents">Incident History</a><a href="#subscribe">Subscribe</a><a href="#ecosystem">Ecosystem</a></nav>
+<button class="btn" id="themeBtn" aria-label="Đổi giao diện sáng/tối">🌓</button>
+</div></header>
+
+<main id="top">
+<div class="wrap">
+<div class="hero">
+<span class="eyebrow">● Trang đang xem: hotapro.online</span>
+<h1>HOTA PRO <span>Service Status</span></h1>
+<p class="lead">Dữ liệu được cập nhật theo nguồn giám sát thực tế khi hệ thống giám sát được kết nối. Khi chưa có nguồn, mọi dịch vụ giữ trạng thái “Chưa kiểm tra”, không có số liệu giả lập.</p>
+<div class="banner" id="status" aria-live="polite">
+<div class="big" id="bigIcon">?</div>
+<div style="flex:1;min-width:220px"><h2 id="bannerTitle">Chưa kiểm tra</h2><p id="bannerSub">Chưa kết nối hệ thống giám sát</p></div>
+<span class="pill s-unknown" id="modePill">Chưa kết nối</span>
+<button class="btn" id="demoBtn">Xem dữ liệu minh họa</button>
+</div>
+<div class="stats" id="stats"></div>
+</div>
+</div>
+
+<div class="wrap"><section id="services">
+<h2 class="t">Services</h2><p class="sub">Từng tên miền trong hệ sinh thái HOTA PRO.</p>
+<div class="note" id="modeNote"></div>
+<div class="tools">
+<input id="q" type="search" placeholder="Tìm tên miền…" aria-label="Tìm dịch vụ">
+<span id="filters"></span>
+<button class="btn on" id="vGrid">Grid</button><button class="btn" id="vList">Danh sách</button>
+</div>
+<div id="view"><div class="grid" id="grid"></div></div>
+</section>
+
+<section id="details"><h2 class="t">Chi tiết kiểm tra</h2>
+<p class="sub">Mỗi dịch vụ hiển thị trạng thái HTTP, lần kiểm tra cuối, thời gian phản hồi và nguồn dữ liệu (xem thẻ dịch vụ phía trên). Chỉ giá trị do monitor trả về mới được hiển thị; ô trống hiển thị “—”.</p></section>
+
+<section id="incidents"><h2 class="t">Incident History</h2><p class="sub">Dòng thời gian sự cố.</p><div class="tl" id="incList"></div></section>
+<section id="maint"><h2 class="t">Maintenance Notices</h2><p class="sub">Thông báo bảo trì theo lịch.</p><div class="tl" id="mList"></div></section>
+
+<section id="faq"><h2 class="t">Câu hỏi thường gặp</h2><p class="sub">&nbsp;</p>
+<details><summary>Trạng thái được kiểm tra như thế nào?</summary><p>Việc kiểm tra liên tục phải do monitor backend hoặc dịch vụ giám sát bên ngoài thực hiện (HTTP check từ nhiều vùng). Trang này chỉ hiển thị kết quả mà monitor trả về qua endpoint cấu hình, không tự khẳng định uptime từ trình duyệt.</p></details>
+<details><summary>Tần suất cập nhật là bao lâu?</summary><p>Do cấu hình monitor quyết định (biến CONFIG.refreshSeconds). Khi chưa kết nối, trang không cập nhật gì.</p></details>
+<details><summary>Tôi nhận thông báo sự cố bằng cách nào?</summary><p>Biểu mẫu đăng ký bên dưới chỉ hoạt động khi có backend gửi email. Hiện tại, bạn có thể liên hệ trực tiếp qua email hoặc hotline hỗ trợ.</p></details>
+<details><summary>Vì sao tất cả đang là “Chưa kiểm tra”?</summary><p>Vì chưa có nguồn giám sát thực được kết nối. Chúng tôi không hiển thị “Operational” khi chưa kiểm tra.</p></details>
+</section>
+
+<section id="subscribe"><h2 class="t">Subscribe</h2>
+<div class="note" id="subNote"></div>
+<form class="sub" id="subForm"><input type="email" id="subEmail" placeholder="email@vidu.com" required aria-label="Email nhận thông báo"><button class="btn p" id="subBtn">Đăng ký</button></form></section>
+
+<section><div class="cta"><div><h2>Cần hỗ trợ?</h2><p>Hota Pro Agency · <a href="mailto:lien-he@hotapro.com">lien-he@hotapro.com</a> · <a href="tel:+84559559756">+84559559756</a></p></div><a class="btn" href="mailto:lien-he@hotapro.com?subject=Hỗ trợ trạng thái dịch vụ">Liên hệ hỗ trợ</a></div></section>
+
+<section id="ecosystem"><h2 class="t">Ecosystem</h2><p class="sub">Hệ sinh thái 11 website HOTA PRO.</p><div class="eco" id="eco"></div>
+<div class="soc" id="soc"></div></section>
+</div>
+</main>
+
+<footer><div class="wrap">
+<b>CÔNG TY TNHH HOTA PRO</b> · Hota Pro Company Limited · Hota Pro Agency<br>
+Địa chỉ (theo thông tin được cung cấp): 19A Trịnh Văn Bô, Hòe Thị, Xuân Phương, Hà Nội 12008<br>
+Mã số đăng ký (theo thông tin được cung cấp): 0049200994 · Ngày 01/10/2026 · Đại diện: Ngô Anh Vũ<br>
+© <span id="yr"></span> HOTA PRO. Trang trạng thái này không công bố SLA hoặc uptime khi chưa có bằng chứng giám sát.
+</div></footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ============ CẤU HÌNH ============
+ * endpoint: URL JSON do monitor backend trả về (CORS cho phép). Để trống = CHƯA KẾT NỐI, không giả lập live.
+ *   Định dạng: { "services":[{"id":"hotapro.com","status":"operational|degraded|down|maintenance",
+ *     "http":200,"responseMs":184,"checkedAt":"ISO-8601","source":"tên monitor"}],
+ *     "incidents":[{"title","status","at","body"}], "maintenance":[{"title","start","end","body"}] }
+ * refreshSeconds: chu kỳ tải lại khi có endpoint (tối thiểu 30).
+ * subscribeEndpoint: URL POST nhận email. Để trống = chưa có backend gửi email.
+ * services: danh sách tên miền; current đánh dấu website đang xem.
+ */
+const CONFIG={
+  endpoint:"",
+  refreshSeconds:60,
+  subscribeEndpoint:"",
+  services:[
+    {id:"hotapro.com"},{id:"hotapro.net"},{id:"hotapro.us"},{id:"hotapro.org"},
+    {id:"hotapro.online",current:true},{id:"hotapro.me"},{id:"hotapro.store"},
+    {id:"hotapro.tech"},{id:"hotapro.app"},{id:"hotapro.xyz"},{id:"hotapro.site"}
+  ],
+  social:[["Facebook","https://www.facebook.com/hotapro"],["Instagram","https://www.instagram.com/hotapro"],["Threads","https://www.threads.com/@hotapro"],["TikTok","https://www.tiktok.com/@hotapro"],["YouTube","https://www.youtube.com/@hotapro"],["GitHub","https://github.com/hotapro"],["Pinterest","https://www.pinterest.com/hotapro"],["LinkedIn","https://www.linkedin.com/company/hotapro"]]
+};
+const LBL={unknown:"Chưa kiểm tra",operational:"Hoạt động",degraded:"Suy giảm",down:"Gián đoạn",maintenance:"Bảo trì"};
+const $=s=>document.querySelector(s);
+const st={mode:CONFIG.endpoint?"live":"none",data:{},incidents:[],maint:[],filter:"all",view:"grid",demo:false};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* Dữ liệu minh họa: chỉ dùng khi người dùng bấm nút, luôn gắn nhãn */
+function demoData(){
+  const s=["operational","operational","degraded","operational","operational","maintenance","operational","down","operational","operational","operational"];
+  const d={};CONFIG.services.forEach((x,i)=>d[x.id]={status:s[i],http:s[i]=="down"?503:200,responseMs:120+i*37,checkedAt:null,source:"Dữ liệu minh họa"});
+  return d;
+}
+async function load(){
+  if(!CONFIG.endpoint){render();return}
+  try{
+    const r=await fetch(CONFIG.endpoint,{cache:"no-store"});if(!r.ok)throw 0;
+    const j=await r.json();st.data={};(j.services||[]).forEach(x=>st.data[x.id]=x);
+    st.incidents=j.incidents||[];st.maint=j.maintenance||[];st.mode="live";
+  }catch(e){st.mode="error"}
+  render();
+}
+function eff(id){
+  if(st.demo)return demoData()[id];
+  if(st.mode==="live")return st.data[id];
+  return null;
+}
+function render(){
+  const rows=CONFIG.services.map(s=>({...s,r:eff(s.id)}));
+  const cnt={unknown:0,operational:0,degraded:0,down:0,maintenance:0};
+  rows.forEach(x=>cnt[x.r?x.r.status:"unknown"]++);
+  const live=st.mode==="live"&&!st.demo;
+  /* banner */
+  let t="Chưa kiểm tra",sub="Chưa kết nối hệ thống giám sát",c="unknown",ic="?",pill="Chưa kết nối";
+  if(st.demo){sub="Dữ liệu minh họa, không phản ánh tình trạng thật";pill="Dữ liệu minh họa";t=cnt.down?"Có dịch vụ gián đoạn (minh họa)":"Minh họa";c=cnt.down?"down":"degraded";ic="!"}
+  else if(st.mode==="error"){sub="Không tải được dữ liệu từ nguồn giám sát";pill="Lỗi nguồn dữ liệu";t="Không xác định"}
+  else if(live){pill="Dữ liệu trực tiếp";sub="Từ nguồn giám sát đã cấu hình";
+    const known=rows.filter(x=>x.r).length;
+    if(!known){t="Chưa có kết quả kiểm tra"}else if(cnt.down){t="Một số dịch vụ gián đoạn";c="down";ic="✕"}else if(cnt.degraded){t="Một số dịch vụ suy giảm";c="degraded";ic="!"}else if(cnt.unknown){t="Một phần dịch vụ chưa kiểm tra"}else{t="Tất cả dịch vụ hoạt động";c="operational";ic="✓"}}
+  $("#bannerTitle").textContent=t;$("#bannerSub").textContent=sub;
+  $("#bigIcon").textContent=ic;$("#bigIcon").style.background=`var(--${{unknown:"unk",operational:"ok",degraded:"warn",down:"bad"}[c]})`;
+  $("#modePill").textContent=pill;$("#demoBtn").textContent=st.demo?"Tắt dữ liệu minh họa":"Xem dữ liệu minh họa";
+  $("#stats").innerHTML=Object.keys(cnt).filter(k=>k!="maintenance"||cnt[k]).map((k,i)=>`<div class="stat" style="animation-delay:${i*70}ms"><b style="color:var(--${{unknown:"unk",operational:"ok",degraded:"warn",down:"bad",maintenance:"unk"}[k]})">${cnt[k]}</b><small>${LBL[k]}</small></div>`).join("");
+  $("#modeNote").innerHTML=st.demo?"<b>Dữ liệu minh họa.</b> Các trạng thái, mã HTTP và thời gian phản hồi bên dưới là mẫu, không phải kết quả kiểm tra thật.":(live?"Dữ liệu trực tiếp từ endpoint giám sát đã cấu hình.":"<b>Chưa kết nối hệ thống giám sát.</b> Đặt <code>CONFIG.endpoint</code> để hiển thị dữ liệu thật.");
+  /* filters */
+  $("#filters").innerHTML=["all","unknown","operational","degraded","down"].map(k=>`<button class="btn ${st.filter==k?"on":""}" data-f="${k}">${k=="all"?"Tất cả":LBL[k]}</button>`).join(" ");
+  const q=$("#q").value.trim().toLowerCase();
+  const list=rows.filter(x=>(st.filter=="all"||(x.r?x.r.status:"unknown")==st.filter)&&x.id.includes(q));
+  $("#grid").innerHTML=list.map((x,i)=>{
+    const r=x.r,s=r?r.status:"unknown";
+    const bars=Array.from({length:30},(_,k)=>`<i style="${st.demo?`height:${40+((k*37+i*11)%60)}%`:""}"></i>`).join("");
+    return `<article class="svc" style="animation-delay:${i*40}ms"><div class="top"><h3>${x.id}${x.current?'<span class="cur">Đang xem</span>':""}</h3><span class="pill s-${s}">${LBL[s]}</span></div>
+    <div class="kv"><span>HTTP</span><b>${r&&r.http?esc(r.http):"—"}</b><span>Kiểm tra cuối</span><b>${r&&r.checkedAt?new Date(r.checkedAt).toLocaleString("vi-VN"):"—"}</b><span>Phản hồi</span><b>${r&&r.responseMs!=null?esc(r.responseMs)+" ms":"—"}</b><span>Nguồn</span><b>${r&&r.source?esc(r.source):"Chưa kết nối"}</b></div>
+    <div class="bars ${st.demo?"demo":""}" aria-hidden="true">${bars}</div>
+    <div class="acts"><a class="btn" href="https://www.${x.id}" target="_blank" rel="noopener">Mở</a><button class="btn" data-copy="https://www.${x.id}">Sao chép URL</button></div></article>`}).join("")||'<div class="empty">Không có dịch vụ phù hợp.</div>';
+  /* timelines */
+  const ev=(a,fallback)=>a.length?a.map(e=>`<div class="ev"><h4>${esc(e.title||"")}</h4><time>${esc(e.at||e.start||"")}${e.end?" → "+esc(e.end):""}</time><p style="margin:6px 0 0;color:var(--mut)">${esc(e.body||"")}</p></div>`).join(""):`<div class="empty">${fallback}</div>`;
+  $("#incList").innerHTML=ev(live?st.incidents:[],live?"Chưa có sự cố nào được ghi nhận từ nguồn giám sát.":"Chưa kết nối hệ thống giám sát nên chưa có lịch sử sự cố. Chúng tôi không tạo lịch sử giả.");
+  $("#mList").innerHTML=ev(live?st.maint:[],live?"Hiện không có lịch bảo trì được công bố.":"Chưa có thông báo bảo trì được công bố.");
+}
+/* events */
+document.addEventListener("click",e=>{
+  const f=e.target.closest("[data-f]");if(f){st.filter=f.dataset.f;render()}
+  const c=e.target.closest("[data-copy]");if(c){navigator.clipboard?.writeText(c.dataset.copy).then(()=>toast("Đã sao chép: "+c.dataset.copy),()=>toast("Không thể sao chép"))}
+});
+$("#q").addEventListener("input",render);
+$("#demoBtn").onclick=()=>{st.demo=!st.demo;render()};
+function setView(v){st.view=v;$("#view").className=v=="list"?"list":"";$("#vGrid").classList.toggle("on",v=="grid");$("#vList").classList.toggle("on",v=="list")}
+$("#vGrid").onclick=()=>setView("grid");$("#vList").onclick=()=>setView("list");
+$("#themeBtn").onclick=()=>{const d=document.documentElement,dark=d.dataset.theme=="dark"||(d.dataset.theme=="auto"&&matchMedia("(prefers-color-scheme:dark)").matches);d.dataset.theme=dark?"light":"dark"};
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),2200)}
+/* subscribe */
+$("#subNote").innerHTML=CONFIG.subscribeEndpoint?"Nhập email để nhận thông báo sự cố.":"<b>Chưa có backend gửi email.</b> Biểu mẫu này hiện chưa gửi hay lưu địa chỉ email của bạn.";
+$("#subForm").onsubmit=async e=>{e.preventDefault();
+  if(!CONFIG.subscribeEndpoint){toast("Chưa có backend gửi email, chưa thể đăng ký");return}
+  try{const r=await fetch(CONFIG.subscribeEndpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:$("#subEmail").value})});toast(r.ok?"Đã đăng ký":"Đăng ký thất bại")}catch(_){toast("Đăng ký thất bại")}};
+/* ecosystem + social */
+$("#eco").innerHTML=CONFIG.services.map(s=>`<a href="https://www.${s.id}" target="_blank" rel="noopener">${s.id}${s.current?" ★":""}</a>`).join("");
+$("#soc").innerHTML=CONFIG.social.map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener me">${n}</a>`).join("");
+$("#yr").textContent=new Date().getFullYear();
+render();load();
+if(CONFIG.endpoint)setInterval(load,Math.max(30,CONFIG.refreshSeconds)*1000);
+</script>
+</body>
+</html>
